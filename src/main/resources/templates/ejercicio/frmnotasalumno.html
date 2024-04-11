@@ -45,9 +45,22 @@
                         </div>
                     </form>
                 </div>
-                <div class="text-bg-primary">
+                <div th:if="${promedio}" class="text-bg-primary">
                     <div class="card-header">
-                        <h5 class="text-center">Aquí deben ir los resultados</h5>
+                        <p class="font-monospace" th:text="${notas}"></p>
+                    </div>
+                    <div class="card-header">
+                        <p class="font-monospace">Nota eliminada: <span th:text="${nEliminada}"></span></p>
+                    </div>
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col">
+                                <p class="font-monospace">Promedio: <span th:text="${promedio}"></span></p>
+                            </div>
+                            <div class="col">
+                                <p class="fw-lighter text-end">N1 * 0.2 + N2 * 0.3 + N3 * 0.5</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
