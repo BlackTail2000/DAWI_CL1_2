@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import java.time.LocalDate;
+import java.time.Period;
 
 @Controller
 @RequestMapping("/ejercicio")
@@ -52,6 +54,22 @@ public class EjercicioController {
 
     @GetMapping("/tres")
     public String ejercicioDNI(){
+        return "ejercicio/frmverificaciondni";
+    }
+    @PostMapping("/tres")
+    public String ejercicioDNI(@RequestParam("fechaNacimiento") String fechaNacimiento, Model model) {
+        String mensaje;
+
+        LocalDate fechaNacimientoDate = LocalDate.parse(fechaNacimiento);
+        Period edad = Period.between(fechaNacimientoDate, LocalDate.now());
+        //SEGUN LA RENIEC LA EDAD PARA HACER EL TRAMITE DE DNI AZUL ES A LOS 17 AÑOS
+        if (edad.getYears() >= 17) {
+            mensaje = "¡Debe acercarse a sacar su DNI Azul!";
+        } else {
+            int aniosRestantes = 17 - edad.getYears();
+            mensaje = "Aún no tienes la edad suficiente. Deberás sacar tu DNI Azul dentro de " + aniosRestantes + " años.";
+        }
+        model.addAttribute("mensaje", mensaje);
         return "ejercicio/frmverificaciondni";
     }
 
