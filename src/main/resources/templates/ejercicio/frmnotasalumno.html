@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{layout::head}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <nav th:replace="~{layout::menu}"></nav>
+    <div class="p-5">
+        <div class="py-5">
+            <div class="card border-primary mb-3 mx-auto" style="max-width: 30rem;">
+                <div class="card-header text-center text-bg-primary">
+                    <h3>Promedio de Notas</h3>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Ingresar notas:</h5>
+                    <form method="post">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Nota 1</span>
+                            <input type="number" class="form-control" placeholder="0"
+                                   aria-label="Nota1" aria-describedby="basic-addon1"
+                                   name="n1" required min="0" max="20">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon2">Nota 2</span>
+                            <input type="number" class="form-control" placeholder="0"
+                                   aria-label="Nota2" aria-describedby="basic-addon2"
+                                   name="n2" required min="0" max="20">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon3">Nota 3</span>
+                            <input type="number" class="form-control" placeholder="0"
+                                   aria-label="Nota3" aria-describedby="basic-addon3"
+                                   name="n3" required min="0" max="20">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon4">Nota 4</span>
+                            <input type="number" class="form-control" placeholder="0"
+                                   aria-label="Nota4" aria-describedby="basic-addon4"
+                                   name="n4" required min="0" max="20">
+                        </div>
+                        <div class="d-flex justify-content-around">
+                            <button type="submit" class="btn btn-primary">Calcular</button>
+                            <button type="reset" class="btn btn-warning">Limpiar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="text-bg-primary">
+                    <div class="card-header">
+                        <h5 class="text-center">Aquí deben ir los resultados</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
