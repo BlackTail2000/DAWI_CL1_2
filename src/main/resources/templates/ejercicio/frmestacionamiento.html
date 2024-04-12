@@ -5,37 +5,51 @@
     <title>Title</title>
 </head>
 <body>
-    <nav th:replace="~{layout::menu}"></nav>
-    <div class="p-5">
-        <div class="py-5">
-            <div class="card border-primary mb-3 mx-auto" style="max-width: 30rem;">
-                <div class="card-header text-center text-bg-primary">
-                    <h3>Costo de estacionamiento</h3>
+<nav th:replace="~{layout::menu}"></nav>
+<div class="p-5">
+    <div class="py-5">
+        <div class="card border-primary mb-3 mx-auto" style="max-width: 30rem;">
+            <div class="card-header text-center text-bg-primary">
+                <h3>Costo de estacionamiento</h3>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Ingresar valores:</h5>
+                <form method="post">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text col-3" id="basic-addon1">Horas</span>
+                        <input type="number" class="form-control" placeholder="0"
+                               aria-label="Horas" aria-describedby="basic-addon1"
+                               name="horas" required min="0">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text col-3" id="basic-addon2">Minutos</span>
+                        <input type="number" class="form-control" placeholder="0"
+                               aria-label="Minutos" aria-describedby="basic-addon2"
+                               name="minutos" required min="0">
+                    </div>
+                    <div class="d-flex justify-content-around">
+                        <button type="submit" class="btn btn-primary">Calcular</button>
+                        <button type="reset" class="btn btn-warning">Limpiar</button>
+                    </div>
+                </form>
+            </div>
+            <div th:if="${total}" class="text-bg-primary">
+                <div class="card-header">
+                    <p class="font-monospace">Horas: <span th:text="${horas}"></span></p>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">Ingresar valores:</h5>
-                    <form method="post">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text col-3" id="basic-addon1">Horas</span>
-                            <input type="number" class="form-control" placeholder="0"
-                                   aria-label="Horas" aria-describedby="basic-addon1"
-                                   name="h" required min="0">
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text col-3" id="basic-addon2">Minutos</span>
-                            <input type="number" class="form-control" placeholder="0"
-                                   aria-label="Minutos" aria-describedby="basic-addon2"
-                                   name="m" required min="0">
-                        </div>
-                        <div class="d-flex justify-content-around">
-                            <button type="submit" class="btn btn-primary">Calcular</button>
-                            <button type="reset" class="btn btn-warning">Limpiar</button>
-                        </div>
-                    </form>
+                <div class="card-header">
+                    <p class="font-monospace">Minutos: <span th:text="${minutos}"></span></p>
                 </div>
-                <div class="text-bg-primary">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col">
+                            <p class="font-monospace">Total: <span th:text="${total}"></span></p>
+                        </div>
+                    </div>
                     <div class="card-header">
-                        <h5 class="text-center">Aquí deben ir los resultados</h5>
+                        <div class="col">
+                            <p class="fw-lighter text-end"> Total = (Horas * 1.5) + (Minutos * 1.5/60)</p>
+                        </div>
                     </div>
                 </div>
             </div>

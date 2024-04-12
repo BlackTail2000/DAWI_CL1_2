@@ -17,7 +17,20 @@ public class EjercicioController {
     public String ejercicioEstacionamiento(){
         return "ejercicio/frmestacionamiento";
     }
+    @PostMapping("/uno")
+    public String ejercicioEstacionamiento(@RequestParam("horas") int horas, @RequestParam("minutos") int minutos,
+                                           Model model){
 
+        double total;
+
+        total = horas * 1.5 + (minutos * (1.5/60));
+
+        model.addAttribute("horas", horas);
+        model.addAttribute("minutos", minutos);
+        model.addAttribute("total", total);
+
+        return "ejercicio/frmestacionamiento";
+    }
     @GetMapping("/dos")
     public String ejercicioPromedio(){
         return "ejercicio/frmnotasalumno";
