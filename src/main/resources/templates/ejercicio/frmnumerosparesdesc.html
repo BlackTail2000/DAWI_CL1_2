@@ -2,21 +2,21 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="~{layout::head}">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Título</title>
 </head>
 <body>
-    <nav th:replace="~{layout::menu}"></nav>
-    <div class="p-5">
-        <div class="py-5">
-            <div class="card border-primary mb-3 mx-auto" style="max-width: 30rem;">
-                <div class="card-header text-center text-bg-primary">
-                    <h3>Números pares descendientes entre 20 y 10</h3>
-                </div>
-                <div class="card-body">
-                    <h5 class="text-center">Aquí deben ir los resultados</h5>
-                </div>
+<nav th:replace="~{layout::menu}"></nav>
+<div class="p-5">
+    <div class="py-5">
+        <div class="card border-primary mb-3 mx-auto" style="max-width: 30rem;">
+            <div class="card-header text-center text-bg-primary">
+                <h3>Números pares descendentes entre 20 y 10</h3>
             </div>
+            <ul>
+                <li th:each="numero : ${numerosPares}" th:text="${numero}"></li>
+            </ul>
         </div>
     </div>
+</div>
 </body>
 </html>

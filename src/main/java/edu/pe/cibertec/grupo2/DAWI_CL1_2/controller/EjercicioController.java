@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/ejercicio")
@@ -87,7 +89,19 @@ public class EjercicioController {
     }
 
     @GetMapping("/cuatro")
-    public String ejercicioNumerosPares(){
+    public String ejercicioNumerosPares(Model model){
+        List<Integer> numerosPares = obtenerNumerosPares();
+        model.addAttribute("numerosPares", numerosPares);
         return "ejercicio/frmnumerosparesdesc";
+    }
+
+    public List<Integer> obtenerNumerosPares() {
+        List<Integer> numerosPares = new ArrayList<>();
+        for (int i = 20; i >= 10; i--) {
+            if (i % 2 == 0) {
+                numerosPares.add(i);
+            }
+        }
+        return numerosPares;
     }
 }
